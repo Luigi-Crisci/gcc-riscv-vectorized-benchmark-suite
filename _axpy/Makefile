@@ -14,8 +14,8 @@ serial:
 
 vector:
 	echo "vector"
-	${GCC_RISCV}/bin/riscv64-unknown-elf-g++ -std=c++17 -mcpu=c920 -mabi=lp64d -O3 -mtune=c920  src/main.c -o bin/axpy
-	# ${GCC_RISCV}/bin/riscv64-unknown-elf-g++ -std=c++17 -mcpu=c920 -mabi=lp64d -O3 -mtune=c920  src/main.c -S -o bin/axpy.s
+	# ${GCC_RISCV}/bin/riscv64-unknown-elf-g++ -std=c++17 -mcpu=c920 -mabi=lp64d -O3 -mtune=c920 -v  -fno-tree-vectorize -fno-tree-loop-vectorize -fno-tree-slp-vectorize src/main.c -o bin/axpy
+	${GCC_RISCV}/bin/riscv64-unknown-elf-g++ -std=c++17 -mcpu=c920 -mabi=lp64d -O3 -mtune=c920  -fno-tree-vectorize -fno-tree-loop-vectorize -fno-tree-slp-vectorize src/main.c -S -o bin/axpy.s
 
 clean:
 	rm bin/*.dump; \

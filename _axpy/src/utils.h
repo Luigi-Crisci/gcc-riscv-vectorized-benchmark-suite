@@ -7,6 +7,9 @@
 #include <errno.h>
 #include <assert.h>
 
+#include <vector>
+#include <algorithm>
+
 template<typename T>
 void capture_ref_result(T *y, T* y_ref, int n)
 {
@@ -37,4 +40,8 @@ void test_result(T *y, T *y_ref, long nrows)
 }
 
 
-
+double median(std::vector<double>& v){
+   size_t n = v.size() / 2;
+   std::nth_element(v.begin(), v.begin()+n, v.end());
+   return v[n];
+}
